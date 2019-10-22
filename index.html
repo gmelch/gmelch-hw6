@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Art Gallery</title>
+	<script  src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+	<style type="text/css">
+		h1 {
+			size: 40px;
+			text-align: center;
+		}
+		.column {
+			float: left;
+			width: 18%;
+			padding: 5px;
+		}
+
+		.column img {
+			height: 200px;
+			width: auto;
+		}
+
+		.largeImage {
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+			width: 50%;
+		}
+
+		img {
+			height: 350px;
+			width: 100%;
+		}
+
+		.text {
+			top: 200px;
+			left: 200px;
+			width: 100%
+		}
+
+		p {
+			size: 20px;
+			text-align: center;
+		}
+
+		.section {
+			display: block;
+		}
+
+	</style>
+
+	<script language="javascript" type="text/javascript">
+
+		let Gallery = [
+			{
+				name: "Mona Lisa",
+				price: 100000000,
+				image: "https://cdn.britannica.com/24/189624-050-F3C5BAA9/Mona-Lisa-oil-wood-panel-Leonardo-da.jpg"
+			},
+			{
+				name: "The Scream",
+				price: 119900000,
+				image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Edvard_Munch%2C_1893%2C_The_Scream%2C_oil%2C_tempera_and_pastel_on_cardboard%2C_91_x_73_cm%2C_National_Gallery_of_Norway.jpg/220px-Edvard_Munch%2C_1893%2C_The_Scream%2C_oil%2C_tempera_and_pastel_on_cardboard%2C_91_x_73_cm%2C_National_Gallery_of_Norway.jpg"
+			},
+			{
+				name: "Girl with a Pearl Earing",
+				price: 30100000,
+				image: "https://cdn.britannica.com/33/194733-050-4CF75F31/Girl-with-a-Pearl-Earring-canvas-Johannes-1665.jpg"
+			},
+			{
+				name: "Les Demoiselles d'Avignon",
+				price: 1200000000,
+				image: "https://upload.wikimedia.org/wikipedia/en/thumb/4/4c/Les_Demoiselles_d%27Avignon.jpg/350px-Les_Demoiselles_d%27Avignon.jpg"
+			},
+			{
+				name: "Vincent van Gogh",
+				price: 71500000,
+				image: "https://www.nga.gov/content/ngaweb/education/teachers/lessons-activities/self-portraits/van-gogh/jcr%3acontent/parmain/textimage/image.img.jpg/1513624701885.jpg"
+			},
+		];
+
+
+		$(document).ready(function(){
+  			$(".largeImage").hide();
+
+  			$("img").click(function() {
+  				var i = $("img").index(this);
+  				var imageSource = Gallery[i].image;
+  				var title = Gallery[i].name;
+  				var price = Gallery[i].price;
+
+  				$(".largeImage").attr("src", imageSource);
+  				$(".largeImage").show();
+   				$("#name").text("Title: " + title).show();
+   				$("#price").text("Price: $" + price).show();
+
+   				$(".largeImage").delay(5000).fadeOut();
+   				$("p").delay(5000).fadeOut();
+
+  			});
+
+  			$("img").mouseover(function() {
+  				var i = $("img").index(this);
+  				var imageSource = Gallery[i].image;
+  				$(".largeImage").attr("src", imageSource);
+  				$(".largeImage").hide();
+  				$(".largeImage").fadeIn(750);
+  			}); 
+		});
+
+	</script>
+</head>
+<body>
+	<h1>Welcome to the Art Gallery</h1>
+	<div class="row"">
+		<div class="column" id="img1">
+			<img src="https://cdn.britannica.com/24/189624-050-F3C5BAA9/Mona-Lisa-oil-wood-panel-Leonardo-da.jpg" alt="Mona Lisa" style="width:100%">
+		</div>
+		<div class="column" id="img2">
+			<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Edvard_Munch%2C_1893%2C_The_Scream%2C_oil%2C_tempera_and_pastel_on_cardboard%2C_91_x_73_cm%2C_National_Gallery_of_Norway.jpg/220px-Edvard_Munch%2C_1893%2C_The_Scream%2C_oil%2C_tempera_and_pastel_on_cardboard%2C_91_x_73_cm%2C_National_Gallery_of_Norway.jpg" alt="The Scream" style="width:100%">
+		</div>
+		<div class="column" id="img3">
+			<img src="https://cdn.britannica.com/33/194733-050-4CF75F31/Girl-with-a-Pearl-Earring-canvas-Johannes-1665.jpg" alt="Girl with a Pearl Earing" style="width:100%">
+		</div>
+		<div class="column" id="img4">
+			<img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/4c/Les_Demoiselles_d%27Avignon.jpg/350px-Les_Demoiselles_d%27Avignon.jpg" alt="Les Demoiselles d'Avignon" style="width:100%">
+		</div>
+		<div class="column" id="img5">
+			<img src="https://www.nga.gov/content/ngaweb/education/teachers/lessons-activities/self-portraits/van-gogh/jcr%3acontent/parmain/textimage/image.img.jpg/1513624701885.jpg" alt="Vincent van Gogh" style="width:100%">
+		</div>
+	</div>
+	<br>
+	<br>
+	<div class="section">
+		<img class="largeImage" src="">
+		<p id="name"></p>
+		<p id="price"></p>
+	</div>
+	
+</body>
+</html>
